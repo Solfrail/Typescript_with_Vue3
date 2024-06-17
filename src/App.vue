@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Yosumi from './components/yosumi.vue'
+import Dropdown from './components/dropdown.vue'
 
 //For BPMcounter
 const BPMcounter = ref(120.0)
@@ -40,11 +41,11 @@ let decimalPattern = /^\d+\.\d*$/
       <p>{{ BPMcounter.toFixed(1) }}</p>
       <Yosumi
         bgcolor="darkturquoise"
+        id="yosumi1"
         inputID="yosumiInput1"
         :TargetNumber="BPMcounter"
         :StrTargetNumber="FixedBPMcounter"
         @change-BPM="decimalDetect"
-        id="yosumi1"
       />
     </div>
     <div class="text-input" id="text-input2">
@@ -58,6 +59,17 @@ let decimalPattern = /^\d+\.\d*$/
         @change-BPM="intDetect"
       />
     </div>
+    <div class="select-opt" id="select-opt1">
+      <select id="select1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <img src="./img/test.png" />
+    </div>
+    <div class="dropdown-vue">
+      <Dropdown />
+    </div>
   </div>
   <!-- <Yosumi bgcolor="gray" id="yosumi3" inputID="yosumiInput3" /> -->
 </template>
@@ -65,9 +77,10 @@ let decimalPattern = /^\d+\.\d*$/
 <style scoped>
 /* https://ginneko-atelier.com/blogs/entry393/ */
 .app {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   width: 600px;
+  height: 1000px;
   background-color: aquamarine;
 }
 .text-input {
